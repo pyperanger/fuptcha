@@ -38,6 +38,7 @@ int _listlang(char **L)
     printf("\x1B[36m[Info]\x1B[37m Listing available languages\n\t");
     for (i = 0; L[i] != NULL; i++)
         printf("%d)%s\t", i + 1, L[i]);
+    
     printf("\n\r\n-------------------\n");
     return i;
 }
@@ -103,7 +104,6 @@ int shoothesheriff(WORD capinfo)
     
     printf("Find for: %s\nLevel: %d\n", capinfo.text, capinfo.level);
     
-
     while (langs[c] != NULL)
     {
         if (TessBaseAPIInit3(handle, NULL, langs[c]) != 0)
@@ -117,7 +117,6 @@ int shoothesheriff(WORD capinfo)
         if ((textrecon = TessBaseAPIGetUTF8Text(handle)) == NULL)
             die("Error getting text\n");
 
-        
         rank[c][0] = c;
         rank[c][1] = scorepoint(textrecon, capinfo, c);
 
