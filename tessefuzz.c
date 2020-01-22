@@ -133,8 +133,7 @@ shoothesheriff(WORD capinfo)
 
     ++c;
   }
-  a
-
+ 
     puts("~ sorting rank");
 
   // dumb sorting
