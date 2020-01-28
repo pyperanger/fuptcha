@@ -13,6 +13,7 @@
 #include "fuptcha.h"
 #include <getopt.h>
 #include <unistd.h>
+#include <ctype.h>
 
 int
 pargs(int argc, char *argv[], struct WORD *woptcha)
@@ -22,49 +23,38 @@ pargs(int argc, char *argv[], struct WORD *woptcha)
 
     int opts = 0, ret = 0;
     woptcha->verbose = 1;
+    woptcha->level = 1;
+    woptcha->nrank = 1;
+    woptcha->nthread = 1;
 
     while((opts = getopt(argc, argv, "hvf:s:l:r:t:")) != -1) {
         switch(opts) {
             case 'h':
                 ret = 1;
             break;
-            case 'v':
+            case 'v': /* Verbose */
                 woptcha->verbose = 0;
             break;
-            case 'f':
+            case 'f': /* Filename */
                 if(access(optarg, F_OK) == -1)
                     ret = 1;
                 else
                     woptcha->filename = optarg;    
             break;
-            case 's':
-                woptcha->text = optarg; // some BoF but fuck
+            case 's': /*  Text Search  */
+                woptcha->text = optarg; /* some BoF but fuck */
             break;
-            case 'l':
-                if (atoi(optarg) > 0)
-                    woptcha->level = atoi(optarg);
-                else
-                    ret = 1;
+            case 'l': /*  Level  */
+                woptcha->level = atoi(optarg);
             break;
-            case 't':
-                if (atoi(optarg) > 0)
-                    woptcha->nthread = atoi(optarg);
-                else
-                    ret = 1;
+            case 't': /* Thread */
+                woptcha->nthread = atoi(optarg);
             break;
-            case 'r':
-                if (atoi(optarg) > 0)
-                    woptcha->nrank = atoi(optarg);
-                else
-                    ret = 1;
+            case 'r': /* Rank */
+                woptcha->nrank = atoi(optarg);
             break;
-            case '?':
-                if(optopt == 'l')
-                    woptcha->level = 1;
-                else if(optopt == 't')
-                    woptcha->nthread = 1;
-                else if(optopt == 'r')
-                    woptcha->nrank = 1;
+            default: /* '?' */
+                ret = 1;
         }
     }
    
