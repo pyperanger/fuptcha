@@ -9,10 +9,9 @@ main(int argc, char* argv[])
 {
     struct WORD woptcha;
 
-   if(pargs(argc, argv, &woptcha) != 0)
-       puts("vai da merda viado");
+  pargs(argc, argv, &woptcha);
    
-        printf("%s\t%s\t%d\t%d\t%d\t%d", woptcha.text,woptcha.filename, woptcha.level, woptcha.verbose, woptcha.nrank, woptcha.nthread);   
+   printf("%s\t%s\t%d\t%d\t%d\t%d", woptcha.text,woptcha.filename, woptcha.level, woptcha.verbose, woptcha.nrank, woptcha.nthread);   
 
 
     return 0;
