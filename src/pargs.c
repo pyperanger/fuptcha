@@ -9,8 +9,17 @@
 
 void
 help()
-{
-    printf("fuptcha - Auxiliary Captcha Recon Tool\n\n"
+{   
+    printf("\n"
+"  __             _       _           \n"
+" / _|           | |     | |          \n"
+"| |_ _   _ _ __ | |_ ___| |__   __ _ \n"
+"|  _| | | | '_ \\| __/ __| '_ \\ / _` |\n"
+"| | | |_| | |_) | || (__| | | | (_| |\n"
+"|_|  \\__,_| .__/ \\__\\___|_| |_|\\__,_|\n"
+"           | |                        \n"
+"           |_| \n");
+    printf("Auxiliary Captcha Recon Tool v0.1\n\n"
            "-f\t- Filename path\n"
            "-s\t- Text string to find in image\n"
            "-l\t- Search level:\n\t1 - Normal\n\t2 - High\n\t3 - Insane\n"
@@ -25,7 +34,7 @@ help()
 void
 pargs(int argc, char *argv[], struct WORD *woptcha)
 {
-    if(argc < 3) // minium file and textstring
+    if(argc < 4) // minium file and textstring
         help();
 
     int opts = 0;
@@ -60,6 +69,11 @@ pargs(int argc, char *argv[], struct WORD *woptcha)
             case 'r': /* Rank */
                 woptcha->nrank = atoi(optarg);
             break;
+            case '?':
+                if (optopt == 'f')
+                    help();
+                else if (optopt == 's')
+                    help();
             default: /* '?' */
                 help();
         }
