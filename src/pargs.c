@@ -52,9 +52,10 @@ pargs(int argc, char *argv[], struct WORD *woptcha)
                 woptcha->verbose = 0;
             break;
             case 'f': /* Filename */
-                if(access(optarg, F_OK) == -1)
+                if(access(optarg, F_OK) == -1){
+                    printf("File not found\n");
                     help();
-                else
+                }else
                     woptcha->filename = optarg;    
             break;
             case 's': /*  Text Search  */
