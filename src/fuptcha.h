@@ -9,7 +9,7 @@ struct WORD
 {
     char    *text;
     char    *filename;
-    char    **words;
+    char    **words; // died soon 
     unsigned int    lentext;
     unsigned int    fpoint;
     unsigned int    mpoint;

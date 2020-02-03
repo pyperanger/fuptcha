@@ -26,7 +26,8 @@ help()
            "-r\t- Number output of languages score\n"
            "-t\t- Number of threads\n"
            "-v\t- Verbose\n"
-           "-h\t- Help Box(This Message)\n");
+           "-h\t- Help Box(This Message)\n"
+           "\nExample: ./fuptcha -f image.png -s \"FPGA2\" -l 2 -r 1\n");
 
     exit(EXIT_FAILURE);
 }
@@ -38,7 +39,7 @@ pargs(int argc, char *argv[], struct WORD *woptcha)
         help();
 
     int opts = 0;
-    woptcha->verbose = 1;
+    woptcha->verbose = 0;
     woptcha->level = 1;
     woptcha->nrank = 1;
     woptcha->nthread = 1;
@@ -49,7 +50,7 @@ pargs(int argc, char *argv[], struct WORD *woptcha)
                 help();
             break;
             case 'v': /* Verbose */
-                woptcha->verbose = 0;
+                woptcha->verbose = 1;
             break;
             case 'f': /* Filename */
                 if(access(optarg, F_OK) == -1){
@@ -71,11 +72,11 @@ pargs(int argc, char *argv[], struct WORD *woptcha)
                 woptcha->nrank = atoi(optarg);
             break;
             case '?':
-                if (optopt == 'f')
-                    help();
-                else if (optopt == 's')
-                    help();
-            default: /* '?' */
+                if (optopt == 's'){
+                    printf("-s need a argument\n");
+                }else if (optopt == 'f'){
+                    printf("-f need a argument");
+                }
                 help();
         }
     }

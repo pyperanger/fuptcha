@@ -1,17 +1,22 @@
 #include "fuptcha.h"
 #include "pargs.h"
+#include "img.h"
 #include <stdio.h>
-
-
 
 int 
 main(int argc, char* argv[])
 {
     struct WORD woptcha;
-
-  pargs(argc, argv, &woptcha);
+    
+    /* Parse Arguments  */
+    pargs(argc, argv, &woptcha);
    
-   printf("%s\t%s\t%d\t%d\t%d\t%d", woptcha.text,woptcha.filename, woptcha.level, woptcha.verbose, woptcha.nrank, woptcha.nthread);   
+    if(woptcha.verbose)
+        puts("[ VERBOSE ]  ARGUMENTS OK");
+    
+    PIX* img = NULL;
+    if (imginit(&img))
+        die();
 
 
     return 0;
