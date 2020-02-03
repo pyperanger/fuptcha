@@ -5,6 +5,9 @@
  *  to help in image recon.
  */
 
+#include "fuptcha.h"
+#include "util.h"
 #include <leptonica/allheaders.h>
 
 
+PIX* imginit(char* filename);
