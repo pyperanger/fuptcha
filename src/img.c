@@ -1,14 +1,19 @@
-//
+/*
+ *  +Img effect features
+ *  +Img resize
+ *  +Img [..]
+ */
 #include "img.h"
-#include "util.h" 
+#include "fuptcha.h"
+#include "util.h"
 
-PIX*
-imginit(char* filename)
+int
+imginit(struct WORD* w)
 {
-    PIX* img = NULL;
-    
-    if((img = pixRead(filename)) == NULL)
-        return NULL;
+  if ((w->img = pixRead(w->filename)) == NULL) {
+    vmsg("pixRead Error");
+    return false;
+  }
 
-    return img;
+  return true;
 }
