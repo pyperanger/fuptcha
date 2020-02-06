@@ -8,6 +8,7 @@
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
 #define VERB "\x1b[35m"
+#define YELL "\x1b[33m"
 #define RESET "\x1b[0m"
 
 #define gmsg(STR)                                                              \
@@ -22,6 +23,7 @@
   {                                                                            \
     printf("%s[VERBOSE] %s%s\n", VERB, STR, RESET);                            \
   }
+#define lmsg(INT, STR) {printf("%s%i)%s %s  ", YELL, INT, RESET, STR);}
 
 #define die(STR)                                                               \
   {                                                                            \

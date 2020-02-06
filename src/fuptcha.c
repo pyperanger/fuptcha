@@ -10,7 +10,6 @@ main(int argc, char* argv[])
 {
   struct WORD woptcha;
 
-  /* Parse Arguments  */
   pargs(argc, argv, &woptcha);
 
   gmsg("FUPTCHA - github.com/pyperanger/fuptcha");
@@ -19,15 +18,15 @@ main(int argc, char* argv[])
   if (woptcha.verbose)
     vmsg("Args OK");
 
-  if (imginit(&woptcha))
-    die("Error loading image");
+  if (imginit(&woptcha) != 0)
+    die("Error loading image"); // pix already print debug/verbose errors
   
-  gmsg("Image loaded");
+  gmsg("Image loaded - OK");
 
-  //int lenlangs;
-
-  if (tesschklen(&woptcha))
+  if (tesschklen(&woptcha) != 0)
       die("Error Tesseract init");
+ 
+
 
   pixDestroy(&woptcha.img);
 

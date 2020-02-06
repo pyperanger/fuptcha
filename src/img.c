@@ -10,10 +10,8 @@
 int
 imginit(struct WORD* w)
 {
-  if ((w->img = pixRead(w->filename)) == NULL) {
-    vmsg("pixRead Error");
-    return false;
-  }
+  if ((w->img = pixRead(w->filename)) == NULL)
+    return 1;
 
-  return true;
+  return 0;
 }
