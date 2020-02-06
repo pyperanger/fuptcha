@@ -23,7 +23,10 @@
   {                                                                            \
     printf("%s[VERBOSE] %s%s\n", VERB, STR, RESET);                            \
   }
-#define lmsg(INT, STR) {printf("%s%i)%s %s  ", YELL, INT, RESET, STR);}
+#define lmsg(INT, STR)                                                         \
+  {                                                                            \
+    printf("%s%i)%s %s  ", YELL, INT, RESET, STR);                             \
+  }
 
 #define die(STR)                                                               \
   {                                                                            \
