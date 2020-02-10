@@ -12,7 +12,7 @@ tessfree(TessBaseAPI* handle)
 }
 
 void
-tesslistlangs(struct WORD* w)
+tesslistlangs(struct Fuptcha* w)
 {
   gmsg("Listing avaiables languages in tessdata directory");
   int i;
@@ -23,7 +23,7 @@ tesslistlangs(struct WORD* w)
 }
 
 int
-tesschklen(struct WORD* w)
+tesschklen(struct Fuptcha* w)
 {
   TessBaseAPI* handle = NULL;
   handle = TessBaseAPICreate();

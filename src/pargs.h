@@ -3,4 +3,4 @@
 #include "fuptcha.h"
 
 void
-pargs(int argc, char* argv[], struct WORD* woptcha);
+pargs(int argc, char* argv[], struct Fuptcha* fuptcha);

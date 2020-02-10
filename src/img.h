@@ -10,4 +10,4 @@
 #include <leptonica/allheaders.h>
 
 int
-imginit(struct WORD* w);
+imginit(struct Fuptcha* w);

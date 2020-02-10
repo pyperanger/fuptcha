@@ -8,7 +8,7 @@
 #include "util.h"
 
 int
-imginit(struct WORD* w)
+imginit(struct Fuptcha* w)
 {
   if ((w->img = pixRead(w->filename)) == NULL)
     return 1;

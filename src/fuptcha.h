@@ -3,7 +3,7 @@
 #include <leptonica/allheaders.h>
 #include <stdlib.h>
 
-struct WORD
+struct Fuptcha
 {
   char* text;
   char* filename;

@@ -5,8 +5,8 @@
 #include <tesseract/capi.h>
 
 void
-tesslistlangs(struct WORD* w);
+tesslistlangs(struct Fuptcha* w);
 int
-tesschklen(struct WORD* w);
+tesschklen(struct Fuptcha* w);
 void
 tessfree(TessBaseAPI* handle);

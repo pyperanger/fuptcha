@@ -28,20 +28,20 @@ help()
          "-h\t- Help Box(This Message)\n"
          "\nExample: ./fuptcha -f image.png -s \"FPGA2\" -l 2 -r 1\n");
 
-  exit(EXIT_FAILURE);
+  exit(1);
 }
 
 void
-pargs(int argc, char* argv[], struct WORD* woptcha)
+pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
 {
   if (argc < 4) // minium file and textstring
     help();
 
   int opts = 0;
-  woptcha->verbose = 0;
-  woptcha->level = 1;
-  woptcha->nrank = 1;
-  woptcha->nthread = 1;
+  fuptcha->verbose = 0;
+  fuptcha->level = 1;
+  fuptcha->nrank = 1;
+  fuptcha->nthread = 1;
 
   while ((opts = getopt(argc, argv, "hvf:s:l:r:t:")) != -1) {
     switch (opts) {
@@ -49,26 +49,26 @@ pargs(int argc, char* argv[], struct WORD* woptcha)
         help();
         break;
       case 'v': /* Verbose */
-        woptcha->verbose = 1;
+        fuptcha->verbose = 1;
         break;
       case 'f': /* Filename */
         if (access(optarg, F_OK) == -1) {
           printf("File not found\n");
           help();
         } else
-          woptcha->filename = optarg;
+          fuptcha->filename = optarg;
         break;
       case 's':                 /*  Text Search  */
-        woptcha->text = optarg; /* some BoF but fuck */
+        fuptcha->text = optarg; /* some BoF but fuck */
         break;
       case 'l': /*  Level  */
-        woptcha->level = atoi(optarg);
+        fuptcha->level = atoi(optarg);
         break;
       case 't': /* Thread */
-        woptcha->nthread = atoi(optarg);
+        fuptcha->nthread = atoi(optarg);
         break;
       case 'r': /* Rank */
-        woptcha->nrank = atoi(optarg);
+        fuptcha->nrank = atoi(optarg);
         break;
       case '?':
         if (optopt == 's') {
