@@ -10,4 +10,4 @@
 #include <leptonica/allheaders.h>
 
 int
-imginit(struct Fuptcha* w);
+img_init(struct Fuptcha* w);

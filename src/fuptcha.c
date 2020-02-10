@@ -12,18 +12,18 @@ main(int argc, char* argv[])
 
   pargs(argc, argv, &fuptcha);
 
-  gmsg("FUPTCHA - github.com/pyperanger/fuptcha");
+  gmsg("FUPTCHA - github.com/pyperanger/fuptcha - Authors: @pyperanger @growlnx");
   gmsg("Initalizing");
 
   if (fuptcha.verbose)
     vmsg("Args OK");
 
-  if (imginit(&fuptcha) != 0)
+  if (img_init(&fuptcha) != 0)
     die("Error loading image"); // pix already print debug/verbose errors
 
   gmsg("Image loaded - OK");
 
-  if (tesschklen(&fuptcha) != 0)
+  if (tess_chk_len(&fuptcha) != 0)
     die("Error Tesseract init");
 
   pixDestroy(&fuptcha.img);
