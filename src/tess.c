@@ -5,6 +5,7 @@
 #include <tesseract/capi.h>
 
 void
+/* deallocate tessract vars */
 tess_free(TessBaseAPI* handle)
 {
   TessBaseAPIEnd(handle);
@@ -12,18 +13,23 @@ tess_free(TessBaseAPI* handle)
 }
 
 void
-tess_list_langs(struct Fuptcha* w)
+/* listing languages in /usr/include/tessbase  */
+tess_list_langs(struct Fuptcha* f)
 {
-  gmsg("Listing avaiables languages in tessdata directory");
+  if(f->verbose)
+      vmsg("Listing avaiable languages in tessdata directory");
+
   int i;
-  for (i = 0; w->langs[i] != NULL; i++) {
-    lmsg(i+1, w->langs[i]);
+  for (i = 0; f->langs[i] != NULL; i++) {
+    if(f->verbose)
+      lmsg(i+1, f->langs[i]);
   }
-  puts(""); // format text
+
+  gmsg_tll(i,"Avaiable languages in default path"); 
 }
 
 int
-/* Verify avaiable languages in the tessdata directory*/
+/* Verifiy avaiable languages in the tessdata directory */
 tess_chk_len(struct Fuptcha* w)
 {
   TessBaseAPI* handle = NULL;

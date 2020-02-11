@@ -9,8 +9,8 @@ struct Fuptcha
   char* filename;
   PIX* img;
   char** langs;
-  char** words; // died soon
-  unsigned int lentext;
+  unsigned int lenlangs;
+  unsigned int lentext; // die soon
   unsigned int fpoint;
   unsigned int mpoint;
   unsigned int ipoint;

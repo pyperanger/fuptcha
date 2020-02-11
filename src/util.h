@@ -1,9 +1,8 @@
+/* Variadic Macros soon */
 #pragma once
 
 #include <stdio.h>
 
-#define true 0
-#define false 1
 
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
@@ -27,6 +26,7 @@
   {                                                                            \
     printf("%s%i)%s %s  ", YELL, INT, RESET, STR);                             \
   }
+#define gmsg_tll(INT, STR) { printf("%s->%s %i %s\n", GREEN, RESET, INT, STR);}
 
 #define die(STR)                                                               \
   {                                                                            \
