@@ -1,35 +1,30 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 _TARGET="Fuptcha";
-
 declare -a DEPENDENCIES=(
-	# description		path
-	"GCC Compiler"	"/usr/bin/gcc"
-	"Tesseract Lib" "/usr/include/teresseract"
-	"Leptonica Lib" "/usr/include/leptonica"
+  # description   path
+  "GCC Compiler"  "/usr/bin/gcc"
+  "Tesseract Lib" "/usr/include/teresseract"
+  "Leptonica Lib" "/usr/include/leptonica"
 );
-
-# this function verify if the dependencie are ok
-function check # $1 => description $2 => path
-{
-	if [[ -e $2 ]]; then
-		echo -e "☑️ \e[32m$1 is installed in '$2'\e[39m";
-	else
-		echo -e "☐ \e[31mThe $1 are missing in your OS\e[39m";	
-		_HAS_DEPENDENCIE=true;
-	fi
-}
 
 echo -e "Checking for $_TARGET dependencies...\n";
 
 while [[ "${#DEPENDENCIES[@]}" -gt 0 ]]; do
-	check "${DEPENDENCIES[0]}" "${DEPENDENCIES[1]}";
-	DEPENDENCIES=("${DEPENDENCIES[@]:2}");
+
+  if [[ -e "${DEPENDENCIES[1]}" ]]; then
+    echo -e "☑️ \e[32m"${DEPENDENCIES[0]}" is installed in '${DEPENDENCIES[1]}'\e[39m";
+  else
+    echo -e "☐ \e[31mThe ${DEPENDENCIES[0]} are missing in your OS\e[39m";	
+    _HAS_DEPENDENCIE=true;
+  fi
+  
+  DEPENDENCIES=("${DEPENDENCIES[@]:2}");
 done
 
 if [[ "$_HAS_DEPENDENCIE" == true ]]; then
-    echo -e "\nYou need install all dependencies before make $_TARGET!\n";
-    exit 1;
+  echo -e "\nYou need install all dependencies before make $_TARGET!\n";
+  exit 1;
 fi
 
 echo -e "\nAll $_TARGET dependencies are Ok!\n";
