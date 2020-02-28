@@ -1,4 +1,5 @@
 #include "pargs.h"
+#include "score.h"
 #include "fuptcha.h"
 #include <ctype.h>
 #include <getopt.h>

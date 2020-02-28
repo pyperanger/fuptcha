@@ -7,12 +7,16 @@ int
 /* define score points values ; int because future features*/
 score_pt_make(struct Fuptcha* f)
 {
-  f->lentext = strlen(f->text); 
+  f->lentext = strlen(f->text);
   f->fpoint = 100 / f->lentext;
   f->mpoint = f->fpoint / f->lentext;
   f->ipoint = f->mpoint / 2;
 
-  // verbose
+  if (f->verbose) {
+    vmsg("Full point: %d", f->fpoint);
+    vmsg("Medium point: %d", f->mpoint);
+    vmsg("Lower point: %d", f->ipoint);
+  }
 
-  return 0; 
+  return 0;
 }
