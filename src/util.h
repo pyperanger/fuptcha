@@ -1,6 +1,8 @@
 /* Variadic Macros soon */
 #pragma once
 
+#include <signal.h>
+#include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -46,3 +48,5 @@
     fprintf(stderr, "%s[ FATAL ERROR ] %s %s\n", RED, STR, RESET);             \
     exit(1);                                                                   \
   }
+
+void handle_sigint();

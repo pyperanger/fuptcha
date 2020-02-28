@@ -11,6 +11,7 @@ int
 main(int argc, char* argv[])
 {
   struct Fuptcha fuptcha;
+  signal(SIGINT, handle_sigint);
 
   pargs(argc, argv, &fuptcha);
 

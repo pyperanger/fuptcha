@@ -75,7 +75,7 @@ tess_run(struct Fuptcha* fuptcha)
     if ((textrecon = TessBaseAPIGetUTF8Text(handle)) == NULL) 
       vmsg("Error TessBaseAPIGetUTF8Text: %s", fuptcha->langs[c]);
 
-
+    printf("recon text: %s", textrecon);
 
     c++;
   }
