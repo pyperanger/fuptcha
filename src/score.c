@@ -7,7 +7,7 @@ int
 /* define score points values ; int because future features*/
 score_pt_make(struct Fuptcha* f)
 {
-  f->lentext = strlen(f->text);
+  f->lentext = strlen(f->text); //   CWE-126
   f->fpoint = 100 / f->lentext;
   f->mpoint = f->fpoint / f->lentext;
   f->ipoint = f->mpoint / 2;
