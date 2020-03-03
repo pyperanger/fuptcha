@@ -48,6 +48,14 @@ tess_chk_len(struct Fuptcha* w)
   return 1;
 }
 
+/*
+int
+tess_baseinit(TessBaseAPI* h, struct Fuptcha* f)
+{
+    if (TessBaseAPIInit3(h, NULL, f->langs[c]) != 0)
+        vmsg("Error TessBaseAPIInit3: %s", f->langs[c]);
+}
+*/
 int
 /* Run tesseract recon in image and store score  */
 tess_run(struct Fuptcha* fuptcha)
@@ -55,8 +63,6 @@ tess_run(struct Fuptcha* fuptcha)
   TessBaseAPI* handle = NULL;
   int c = 0;
   char* textrecon;
-  char rank[fuptcha->lenlangs][2];
-
   handle = TessBaseAPICreate();
 
   if (!fuptcha->verbose)
@@ -79,6 +85,8 @@ tess_run(struct Fuptcha* fuptcha)
 
     c++;
   }
+
+  tess_free(handle);
 
   return 0;
 }

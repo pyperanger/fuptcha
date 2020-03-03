@@ -12,3 +12,5 @@ void
 tess_free(TessBaseAPI* handle);
 int
 tess_run(struct Fuptcha* f);
+int
+tess_baseinit(TessBaseAPI* handle, struct Fuptcha* f);
