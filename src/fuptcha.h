@@ -10,7 +10,7 @@ struct Fuptcha
   PIX* img;
   char** langs;
   int** rank;
-  unsigned int lenlangs;
+  int lenlangs;
   unsigned int fpoint;
   unsigned int mpoint;
   unsigned int ipoint;

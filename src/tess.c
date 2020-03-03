@@ -24,7 +24,7 @@ tess_list_langs(struct Fuptcha* f)
     if (f->verbose)
       lmsg(i + 1, f->langs[i]);
   }
-
+  f->lenlangs = i;
   gmsg("%d Avaiable languages in default path", i);
 }
 

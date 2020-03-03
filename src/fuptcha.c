@@ -37,7 +37,10 @@ main(int argc, char* argv[])
     die("Error Tesseract init");
 
   if (score_pt_make(&fuptcha) != 0)
-    die("Score point problem, call the sheriff");
+    die("Score point problem");
+
+  if(score_rankbuild(&fuptcha) != 0)
+      die("ranklloc");
 
   /* running */
   tess_run(&fuptcha);
