@@ -8,6 +8,14 @@
 #include <string.h>
 
 int
+fuptcha_free(struct Fuptcha* f){
+    free(f->rank);
+    free(f->langs);
+    pixDestroy(&f->img);     
+    return 0;
+}
+
+int
 main(int argc, char* argv[])
 {
   struct Fuptcha fuptcha;
@@ -28,14 +36,13 @@ main(int argc, char* argv[])
   if (tess_chk_len(&fuptcha) != 0)
     die("Error Tesseract init");
 
-  score_pt_make(&fuptcha);
+  if (score_pt_make(&fuptcha) != 0)
+    die("Score point problem, call the sheriff");
 
   /* running */
   tess_run(&fuptcha);
 
-
-  /* deallocate fuptcha vars */
-  pixDestroy(&fuptcha.img);
+  fuptcha_free(&fuptcha);
 
   return 0;
 }

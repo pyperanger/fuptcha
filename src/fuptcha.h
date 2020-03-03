@@ -9,8 +9,8 @@ struct Fuptcha
   char* filename;
   PIX* img;
   char** langs;
+  int** rank;
   unsigned int lenlangs;
-  unsigned int lentext; // die soon
   unsigned int fpoint;
   unsigned int mpoint;
   unsigned int ipoint;
@@ -19,3 +19,5 @@ struct Fuptcha
   unsigned int nrank;
   unsigned int nthread;
 };
+
+int fuptcha_free(struct Fuptcha* f);

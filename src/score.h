@@ -7,3 +7,5 @@ int
 score_pt_make(struct Fuptcha* f);
 int
 score_point();
+int
+score_rankbuild(struct Fuptcha* f);
