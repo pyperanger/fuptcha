@@ -39,9 +39,6 @@ main(int argc, char* argv[])
   if (score_pt_make(&fuptcha) != 0)
     die("Score point problem");
 
-  if(score_rankbuild(&fuptcha) != 0)
-      die("ranklloc");
-
   /* running */
   tess_run(&fuptcha);
 

@@ -3,7 +3,7 @@
 #include "util.h"
 
 int
-/* define score points values ; int because future features*/
+/* define score points values */
 score_pt_make(struct Fuptcha* f)
 {
   size_t lentext = strnlen(f->text, sizeof(f->text));
@@ -16,6 +16,9 @@ score_pt_make(struct Fuptcha* f)
     vmsg("Medium point: %d", f->mpoint);
     vmsg("Lower point: %d", f->ipoint);
   }
+
+  if(score_rankbuild(f) != 0)
+    die("ranklloc");   
 
   return 0;
 }
@@ -31,7 +34,6 @@ score_rankbuild(struct Fuptcha* f)
             f->rank[i] = malloc(2*sizeof(int));
             f->rank[i][1] = 0;
         }
-
         return 0;
     }
     return 1;
