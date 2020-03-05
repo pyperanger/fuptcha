@@ -2,9 +2,9 @@
 #pragma once
 
 #include <signal.h>
-#include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
@@ -45,9 +45,11 @@
   }
 #define die(STR)                                                               \
   {                                                                            \
-    fprintf(stderr, "%s[ - ] %s %s\n", RED, STR, RESET);             \
+    fprintf(stderr, "%s[ - ] %s %s\n", RED, STR, RESET);                       \
     exit(1);                                                                   \
   }
 
-void handle_sigint();
-size_t strnlen(const char * s, size_t len);
+void
+handle_sigint();
+size_t
+strnlen(const char* s, size_t len);

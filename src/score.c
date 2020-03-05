@@ -17,8 +17,8 @@ score_pt_make(struct Fuptcha* f)
     vmsg("Lower point: %d", f->ipoint);
   }
 
-  if(score_rankbuild(f) != 0)
-    die("ranklloc");   
+  if (score_rankbuild(f) != 0)
+    die("ranklloc");
 
   return 0;
 }
@@ -27,14 +27,14 @@ int
 /* freeded by futpcha_free */
 score_rankbuild(struct Fuptcha* f)
 {
-    if(f->lenlangs != 0){ 
-        f->rank = (int**)malloc(f->lenlangs*sizeof(int*));
+  if (f->lenlangs != 0) {
+    f->rank = (int**)malloc(f->lenlangs * sizeof(int*));
 
-        for(register int i = 0; i < f->lenlangs; i++){
-            f->rank[i] = malloc(2*sizeof(int));
-            f->rank[i][1] = 0;
-        }
-        return 0;
+    for (register int i = 0; i < f->lenlangs; i++) {
+      f->rank[i] = malloc(2 * sizeof(int));
+      f->rank[i][1] = 0;
     }
-    return 1;
+    return 0;
+  }
+  return 1;
 }

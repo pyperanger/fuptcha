@@ -8,11 +8,12 @@
 #include <string.h>
 
 int
-fuptcha_free(struct Fuptcha* f){
-    free(f->rank);
-    free(f->langs);
-    pixDestroy(&f->img);     
-    return 0;
+fuptcha_free(struct Fuptcha* f)
+{
+  free(f->rank);
+  free(f->langs);
+  pixDestroy(&f->img);
+  return 0;
 }
 
 int

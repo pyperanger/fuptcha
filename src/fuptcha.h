@@ -20,4 +20,5 @@ struct Fuptcha
   unsigned int nthread;
 };
 
-int fuptcha_free(struct Fuptcha* f);
+int
+fuptcha_free(struct Fuptcha* f);

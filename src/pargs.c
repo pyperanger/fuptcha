@@ -1,6 +1,6 @@
 #include "pargs.h"
-#include "score.h"
 #include "fuptcha.h"
+#include "score.h"
 #include <ctype.h>
 #include <getopt.h>
 #include <stdio.h>
