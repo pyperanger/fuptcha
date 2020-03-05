@@ -3,6 +3,8 @@
 #include <leptonica/allheaders.h>
 #include <stdlib.h>
 
+#define TEXT_LIMIT 255
+
 struct Fuptcha
 {
   char* text;

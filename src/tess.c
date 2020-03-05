@@ -1,6 +1,7 @@
 #include "tess.h"
 #include "fuptcha.h"
 #include "util.h"
+#include "score.h"
 #include <pthread.h>
 #include <stdio.h>
 #include <tesseract/capi.h>
@@ -77,13 +78,21 @@ tess_nthread(void* agent)
       vmsg("Error TessBaseAPIGetUTF8Text: %s",
            tess_agent->f->langs[tess_agent->start]);
 
+    tess_agent->f->rank[tess_agent->start][tess_agent->start]; // nonsense for future reference propose
+    // 
+    if((tess_agent->f->rank[tess_agent->start][1] = score_point(textrecon, tess_agent->f)) == 100)
+      gmsg("%s found the text -> %s", tess_agent->f->langs[tess_agent->start], textrecon);
+    
+    /*
     printf("Thread [  ( %d ) - %d ] -> %s\n",
            tess_agent->start,
            tess_agent->end,
            textrecon);
-
+    */
     tess_agent->start++;
   }
+  
+  tess_free(handle);
   return NULL;
 }
 

@@ -1,7 +1,19 @@
 #include "score.h"
 #include "fuptcha.h"
 #include "util.h"
+#include <string.h>
 
+int
+score_point(char* text, struct Fuptcha* f)
+{
+  int len = strnlen(text, TEXT_LIMIT);
+  if (strncmp(text, f->text, len) == 0)
+    return 100;
+  
+  // working
+
+  return 0;
+}
 int
 /* define score points values */
 score_pt_make(struct Fuptcha* f)
