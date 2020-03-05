@@ -39,7 +39,7 @@ main(int argc, char* argv[])
   if (score_pt_make(&fuptcha) != 0)
     die("Score point problem");
 
-  /* running */
+  /* running - verify return*/
   tess_run(&fuptcha);
 
   fuptcha_free(&fuptcha);

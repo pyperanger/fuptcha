@@ -14,3 +14,13 @@ int
 tess_run(struct Fuptcha* f);
 int
 tess_baseinit(TessBaseAPI* handle, struct Fuptcha* f);
+void*
+tess_nthread(void* agentarg);
+
+struct tess_agenthread
+/* Struct responsible for organize the offset of each thread */
+{
+  struct Fuptcha* f;
+  unsigned int start;
+  unsigned int end;
+};

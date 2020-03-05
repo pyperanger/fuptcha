@@ -2,6 +2,7 @@
 #include "fuptcha.h"
 #include "util.h"
 #include <stdio.h>
+#include <pthread.h>
 #include <tesseract/capi.h>
 
 void
@@ -49,16 +50,8 @@ tess_chk_len(struct Fuptcha* w)
 }
 
 /*
-int
-tess_baseinit(TessBaseAPI* h, struct Fuptcha* f)
-{
-    if (TessBaseAPIInit3(h, NULL, f->langs[c]) != 0)
-        vmsg("Error TessBaseAPIInit3: %s", f->langs[c]);
-}
-*/
-int
-/* Run tesseract recon in image and store score  */
-tess_run(struct Fuptcha* fuptcha)
+void*
+tess_nthread(void* agent )
 {
   TessBaseAPI* handle = NULL;
   int c = 0;
@@ -69,7 +62,6 @@ tess_run(struct Fuptcha* fuptcha)
     TessBaseAPISetVariable(handle, "debug_file", "/dev/null"); // Avoid DPI Errors
  
   while(fuptcha->langs[c] != NULL){
-    /*In thread implementation this part w'be the seed */
     if (TessBaseAPIInit3(handle, NULL, fuptcha->langs[c]) != 0)
       vmsg("Error TessBaseAPIInit3: %s", fuptcha->langs[c]);
   
@@ -87,6 +79,39 @@ tess_run(struct Fuptcha* fuptcha)
   }
 
   tess_free(handle);
+
+  return 0;
+}
+ */
+
+void*
+tess_nthread(void* agent)
+{
+  
+  return NULL;
+}
+
+int
+/* split langs values for threads and execute each one*/
+tess_run(struct Fuptcha* fuptcha)
+{
+   struct tess_agenthread agents[fuptcha->nthread];
+  int i = 0, c = 0;
+  int split_value = fuptcha->lenlangs / fuptcha->nthread;
+  int split_rest = fuptcha->lenlangs % fuptcha->nthread;
+
+  for(;i < fuptcha->nthread ; i++){
+    agents[i].f = fuptcha;
+    for(;;){
+      agents[i].start = 1;
+      agents[i].end = 1;
+    }
+  }
+
+  i = 0;
+  for(;i < fuptcha->lenlangs; i++){
+      
+  }
 
   return 0;
 }
