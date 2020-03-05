@@ -9,6 +9,7 @@ handle_sigint()
 }
 
 size_t
+/* SoF */
 strnlen(const char * s, size_t len)
 {
     size_t i = 0;

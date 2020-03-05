@@ -45,7 +45,7 @@
   }
 #define die(STR)                                                               \
   {                                                                            \
-    fprintf(stderr, "%s[ FATAL ERROR ] %s %s\n", RED, STR, RESET);             \
+    fprintf(stderr, "%s[ - ] %s %s\n", RED, STR, RESET);             \
     exit(1);                                                                   \
   }
 

@@ -49,45 +49,33 @@ tess_chk_len(struct Fuptcha* w)
   return 1;
 }
 
-/*
-void*
-tess_nthread(void* agent )
-{
-  TessBaseAPI* handle = NULL;
-  int c = 0;
-  char* textrecon;
-  handle = TessBaseAPICreate();
-
-  if (!fuptcha->verbose)
-    TessBaseAPISetVariable(handle, "debug_file", "/dev/null"); // Avoid DPI Errors
- 
-  while(fuptcha->langs[c] != NULL){
-    if (TessBaseAPIInit3(handle, NULL, fuptcha->langs[c]) != 0)
-      vmsg("Error TessBaseAPIInit3: %s", fuptcha->langs[c]);
-  
-    TessBaseAPISetImage2(handle, fuptcha->img);
-
-    if (TessBaseAPIRecognize(handle, NULL) != 0)
-      vmsg("Error TessBaseAPIRecongnize: %s", fuptcha->langs[c]);
-   
-    if ((textrecon = TessBaseAPIGetUTF8Text(handle)) == NULL) 
-      vmsg("Error TessBaseAPIGetUTF8Text: %s", fuptcha->langs[c]);
-
-    printf("recon text: %s", textrecon);
-
-    c++;
-  }
-
-  tess_free(handle);
-
-  return 0;
-}
- */
-
 void*
 tess_nthread(void* agent)
 {
+  struct tess_agenthread* tess_agent = (struct tess_agenthread*)agent;
+  TessBaseAPI* handle = NULL; 
+  //size_t i = 0; 
+  char* textrecon;
+  handle = TessBaseAPICreate();
   
+  if(!tess_agent->f->verbose)
+    TessBaseAPISetVariable(handle, "debug_file", "/dev/null"); // Avoid DPI Errors
+
+  while(tess_agent->start < tess_agent->end){
+    if (TessBaseAPIInit3(handle, NULL, tess_agent->f->langs[tess_agent->start]) != 0)
+      vmsg("Error TessBaseAPIInit3: %s", tess_agent->f->langs[tess_agent->start]);
+  
+    TessBaseAPISetImage2(handle, tess_agent->f->img);
+    if (TessBaseAPIRecognize(handle, NULL) != 0)
+      vmsg("Error TessBaseAPIRecongnize: %s", tess_agent->f->langs[tess_agent->start]);
+
+    if ((textrecon = TessBaseAPIGetUTF8Text(handle)) == NULL)
+      vmsg("Error TessBaseAPIGetUTF8Text: %s", tess_agent->f->langs[tess_agent->start]);
+
+    printf("Thread [  ( %d ) - %d ] -> %s\n", tess_agent->start, tess_agent->end, textrecon);
+
+    tess_agent->start++;
+  }
   return NULL;
 }
 
@@ -95,23 +83,33 @@ int
 /* split langs values for threads and execute each one*/
 tess_run(struct Fuptcha* fuptcha)
 {
-   struct tess_agenthread agents[fuptcha->nthread];
+  if(fuptcha->nthread > fuptcha->lenlangs)
+    fuptcha->nthread = fuptcha->lenlangs;
+
+  struct tess_agenthread agents[fuptcha->nthread];
+
   int i = 0, c = 0;
   int split_value = fuptcha->lenlangs / fuptcha->nthread;
   int split_rest = fuptcha->lenlangs % fuptcha->nthread;
 
   for(;i < fuptcha->nthread ; i++){
     agents[i].f = fuptcha;
-    for(;;){
-      agents[i].start = 1;
-      agents[i].end = 1;
+    agents[i].start = c;
+    if(split_rest > 0){
+      c++;
+      split_rest--;
     }
+    agents[i].end = c + split_value - 1; 
+   
+    c = c + split_value;
   }
+  pthread_t thread_agent[fuptcha->nthread];
 
-  i = 0;
-  for(;i < fuptcha->lenlangs; i++){
-      
-  }
+  for(i = 0; i < fuptcha->nthread; i++)
+    pthread_create(&thread_agent[i], NULL, tess_nthread, &agents[i]);
+
+  for(i = 0; i < fuptcha->nthread; i++)
+    pthread_join(thread_agent[i], NULL);
 
   return 0;
 }
