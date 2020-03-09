@@ -6,7 +6,8 @@
 int
 score_point(char* text, struct Fuptcha* f)
 {
-  int len = strnlen(text, TEXT_LIMIT);
+  size_t len = strnlen(f->text, TEXT_LIMIT); // remove for performance
+  printf("recon: %s - parsing:%s\n", text, f->text);
   if (strncmp(text, f->text, len) == 0)
     return 100;
   

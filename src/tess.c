@@ -78,17 +78,17 @@ tess_nthread(void* agent)
       vmsg("Error TessBaseAPIGetUTF8Text: %s",
            tess_agent->f->langs[tess_agent->start]);
 
-    tess_agent->f->rank[tess_agent->start][tess_agent->start]; // nonsense for future reference propose
+    //    tess_agent->f->rank[tess_agent->start][tess_agent->start]; // nonsense for future reference propose
     // 
     if((tess_agent->f->rank[tess_agent->start][1] = score_point(textrecon, tess_agent->f)) == 100)
       gmsg("%s found the text -> %s", tess_agent->f->langs[tess_agent->start], textrecon);
     
-    /*
-    printf("Thread [  ( %d ) - %d ] -> %s\n",
-           tess_agent->start,
-           tess_agent->end,
-           textrecon);
-    */
+    
+//    printf("Thread [  ( %d ) - %d ] -> %s\n",
+ //          tess_agent->start,
+   //        tess_agent->end,
+     //      textrecon);
+    
     tess_agent->start++;
   }
   
@@ -121,6 +121,8 @@ tess_run(struct Fuptcha* fuptcha)
     c = c + split_value;
   }
   pthread_t thread_agent[fuptcha->nthread];
+
+  gmsg("Threads: %d", fuptcha->nthread);
 
   for (i = 0; i < fuptcha->nthread; i++)
     pthread_create(&thread_agent[i], NULL, tess_nthread, &agents[i]);

@@ -32,6 +32,16 @@ help()
   exit(1);
 }
 
+int
+atolol(char* w)
+{
+  int r;
+  if((r = strtol(w, NULL, 10)) == 0L)
+    return 1;
+  
+  return r;
+}
+
 void
 pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
 {
@@ -63,13 +73,13 @@ pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
         fuptcha->text = optarg; /* some BoF but fuck */
         break;
       case 'l': /*  Level  */
-        fuptcha->level = atoi(optarg);
+        fuptcha->level = atolol(optarg);
         break;
       case 't': /* Thread */
-        fuptcha->nthread = atoi(optarg);
+        fuptcha->nthread = atolol(optarg);
         break;
       case 'r': /* Rank */
-        fuptcha->nrank = atoi(optarg);
+        fuptcha->nrank = atolol(optarg);
         break;
       case '?':
         if (optopt == 's') {
