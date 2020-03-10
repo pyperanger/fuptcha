@@ -10,7 +10,9 @@ score_point(char* text, struct Fuptcha* f)
   printf("recon: %s - parsing:%s\n", text, f->text);
   if (strncmp(text, f->text, len) == 0)
     return 100;
-  
+
+
+
   // working
 
   return 0;
