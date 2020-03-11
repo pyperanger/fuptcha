@@ -10,25 +10,19 @@
 void
 help()
 {
-  printf("\n"
-         "  __             _       _           \n"
-         " / _|           | |     | |          \n"
-         "| |_ _   _ _ __ | |_ ___| |__   __ _ \n"
-         "|  _| | | | '_ \\| __/ __| '_ \\ / _` |\n"
-         "| | | |_| | |_) | || (__| | | | (_| |\n"
-         "|_|  \\__,_| .__/ \\__\\___|_| |_|\\__,_|\n"
-         "           | |                        \n"
-         "           |_| \n");
-  printf("Auxiliary Captcha Recon Tool v0.1\n\n"
-         "-f\t- Filename path\n"
-         "-s\t- Text string to find in image\n"
-         "-l\t- Search level:\n\t1 - Normal\n\t2 - High\n\t3 - Insane\n"
-         "-r\t- Number output of languages score\n"
-         "-t\t- Number of threads\n"
-         "-v\t- Verbose\n"
-         "-h\t- Help Box(This Message)\n"
-         "\nExample: ./fuptcha -f image.png -s \"FPGA2\" -l 2 -r 1\n");
-
+  printf("Auxiliary CAPTCHA fuzzer recon tool v1.0"
+         "\n\nUsage: fuptcha -f image.png -s \"FPGA2\"\n\n"
+         "-f FILE  \t- File path\n"
+         "-s TEXT  \t- Text string to find in image\n"
+         "-l LEVEL \t- Set the search level:\n"
+           "\t\t\t1 - Normal (default)\n"
+           "\t\t\t2 - High\n"
+           "\t\t\t3 - Insane\n"
+         "-r N     \t - Set the number output of languages score.\n"
+         "-t N     \t - Set the number of threads (default N = 1).\n"
+         "-v       \t - Enable verbose mode\n"
+         "-h       \t - Display this information.\n"
+       "\nHave found a Bug? Nice! Report here: https://github.com/pyperanger/fuptcha/issues\n");
   exit(1);
 }
 
@@ -38,7 +32,7 @@ atolol(char* w)
   int r;
   if((r = strtol(w, NULL, 10)) == 0L)
     return 1;
-  
+
   return r;
 }
 
