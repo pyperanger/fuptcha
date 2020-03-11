@@ -5,6 +5,11 @@
 
 #define TEXT_LIMIT 255
 
+struct Key_value {
+  unsigned int key;
+  int value;
+};
+
 struct Fuptcha
 {
   char* text;
@@ -13,6 +18,7 @@ struct Fuptcha
   char** langs;
   int** rank;
   int lenlangs;
+  struct Key_value* key_value;
   unsigned int fpoint;
   unsigned int mpoint;
   unsigned int ipoint;

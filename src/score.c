@@ -7,8 +7,7 @@ int
 score_point(char* text, struct Fuptcha* f)
 {
   size_t len = strnlen(f->text, TEXT_LIMIT); // remove for performance
-  printf("recon: %s - parsing:%s\n", text, f->text);
-  if (strncmp(text, f->text, len) == 0)
+ if (strncmp(text, f->text, len) == 0)
     return 100;
 
 
@@ -39,7 +38,9 @@ score_pt_make(struct Fuptcha* f)
 }
 
 int
-/* freeded by futpcha_free */
+/* freeded by futpcha_free
+ *  die soon
+ * */
 score_rankbuild(struct Fuptcha* f)
 {
   if (f->lenlangs != 0) {
