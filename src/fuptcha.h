@@ -26,6 +26,7 @@ struct Fuptcha
   unsigned int verbose;
   unsigned int nrank;
   unsigned int nthread;
+  unsigned int barload;
 };
 
 int

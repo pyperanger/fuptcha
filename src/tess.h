@@ -16,6 +16,8 @@ int
 tess_baseinit(TessBaseAPI* handle, struct Fuptcha* f);
 void*
 tess_nthread(void* agentarg);
+int 
+tess_make_keyvalue(struct Fuptcha*f);
 
 struct tess_agenthread
 /* Struct responsible for organize the offset of each thread */

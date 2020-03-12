@@ -10,10 +10,11 @@
 int
 fuptcha_free(struct Fuptcha* f)
 {
-  free(f->rank);
+  //free(f->rank);
   free(f->langs);
-  free(f->text);
-  free(f->filename);
+  //free(f->text);
+  free(f->key_value);
+  //free(f->filename);
   pixDestroy(&f->img);
   return 0;
 }
@@ -28,7 +29,6 @@ main(int argc, char* argv[])
 
   gmsg(
     "FUPTCHA - github.com/pyperanger/fuptcha - Authors: @pyperanger @growlnx");
-  gmsg("Initalizing");
 
   /* init checks */
   if (img_init(&fuptcha) != 0)

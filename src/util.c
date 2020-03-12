@@ -4,7 +4,7 @@
 void
 handle_sigint()
 {
-  die("SIGINT - Quiting program");
+  die("\rSIGINT - Quiting program");
 }
 
 size_t
