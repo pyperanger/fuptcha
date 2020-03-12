@@ -6,4 +6,4 @@ void
 pargs(int argc, char* argv[], struct Fuptcha* fuptcha);
 
 int
-atolol(char *arg);
+atolol(char* arg);

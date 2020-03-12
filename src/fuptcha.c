@@ -10,11 +10,7 @@
 int
 fuptcha_free(struct Fuptcha* f)
 {
-  //free(f->rank);
   free(f->langs);
-  //free(f->text);
-  free(f->key_value);
-  //free(f->filename);
   pixDestroy(&f->img);
   return 0;
 }

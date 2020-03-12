@@ -10,26 +10,26 @@
 void
 help()
 {
-  printf(
-    " ______     _____ _______ _____ _    _              \n"
-    "|  ____|   |  __ \\__   __/ ____| |  | |   /\\      \n"
-    "| |__ _   _| |__) | | | | |    | |__| |  /  \\      \n"
-    "|  __| | | |  ___/  | | | |    |  __  | / /\\ \\    \n"
-    "| |  | |_| | |      | | | |____| |  | |/ ____ \\    \n"
-    "|_|   \\__,_|_|      |_|  \\_____|_|  |_/_/    \\_\\\n"
-    "Auxiliary CAPTCHA fuzzer recon tool v1.0\n"
-    "\nUsage: fuptcha -f image.png -s \"FPGA2\"\n\n"
-    "-f FILE  \t- File path\n"
-    "-s TEXT  \t- Text string to find in image\n"
-    "-l LEVEL \t- Set the search level:\n"
-              "\t\t\t1 - Normal (default)\n"
-              "\t\t\t2 - High\n"
-              "\t\t\t3 - Insane\n"
-    "-r N     \t - Set the number output of languages score.\n"
-    "-t N     \t - Set the number of threads (default N = 1).\n"
-    "-v       \t - Enable verbose mode\n"
-    "-h       \t - Display this information.\n"
-    "\nHave found a Bug? Nice! Report here: https://github.com/pyperanger/fuptcha/issues\n");
+  printf(" ______     _____ _______ _____ _    _              \n"
+         "|  ____|   |  __ \\__   __/ ____| |  | |   /\\      \n"
+         "| |__ _   _| |__) | | | | |    | |__| |  /  \\      \n"
+         "|  __| | | |  ___/  | | | |    |  __  | / /\\ \\    \n"
+         "| |  | |_| | |      | | | |____| |  | |/ ____ \\    \n"
+         "|_|   \\__,_|_|      |_|  \\_____|_|  |_/_/    \\_\\\n"
+         "Auxiliary CAPTCHA fuzzer recon tool v1.0\n"
+         "\nUsage: fuptcha -f image.png -s \"FPGA2\"\n\n"
+         "-f FILE  \t- File path\n"
+         "-s TEXT  \t- Text string to find in image\n"
+         "-l LEVEL \t- Set the search level:\n"
+         "\t\t\t1 - Normal (default)\n"
+         "\t\t\t2 - High\n"
+         "\t\t\t3 - Insane\n"
+         "-r N     \t - Set the number output of languages score.\n"
+         "-t N     \t - Set the number of threads (default N = 1).\n"
+         "-v       \t - Enable verbose mode\n"
+         "-h       \t - Display this information.\n"
+         "\nHave found a Bug? Nice! Report here: "
+         "https://github.com/pyperanger/fuptcha/issues\n");
   exit(1);
 }
 
@@ -37,7 +37,7 @@ int
 atolol(char* w)
 {
   int r;
-  if((r = strtol(w, NULL, 10)) == 0L)
+  if ((r = strtol(w, NULL, 10)) == 0L)
     return 1;
 
   return r;

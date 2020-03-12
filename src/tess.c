@@ -1,7 +1,7 @@
 #include "tess.h"
 #include "fuptcha.h"
-#include "util.h"
 #include "score.h"
+#include "util.h"
 #include <pthread.h>
 #include <stdio.h>
 #include <tesseract/capi.h>
@@ -80,26 +80,30 @@ tess_nthread(void* agent)
 
     tess_agent->f->key_value[tess_agent->start].key = tess_agent->start;
 
-    if ((tess_agent->f->key_value[tess_agent->start].value = score_point(textrecon, tess_agent->f)) == 100)  
-      printf("%s~ %s found the text -> %s%s",GREEN, tess_agent->f->langs[tess_agent->start], textrecon, RESET);
-   
+    if ((tess_agent->f->key_value[tess_agent->start].value =
+           score_point(textrecon, tess_agent->f)) == 100)
+      printf("%s~ %s found the text -> %s%s",
+             GREEN,
+             tess_agent->f->langs[tess_agent->start],
+             textrecon,
+             RESET);
+
     tess_agent->f->barload++;
     tess_agent->start++;
   }
-  
+
   tess_free(handle);
   return NULL;
 }
 
 int
-tess_make_keyvalue(struct Fuptcha*f)
+tess_make_keyvalue(struct Fuptcha* f)
 {
-  if(f == NULL)
+  if (f == NULL)
     return -1;
-  
-  struct Key_value kv[f->lenlangs];
-  f->key_value = malloc(sizeof(struct Key_value)*f->lenlangs);
-  f->key_value = kv;
+
+  f->key_value =
+    (struct Key_value*)malloc(sizeof(struct Key_value) * f->lenlangs);
 
   return 0;
 }
@@ -107,13 +111,13 @@ int
 /* split langs values for threads and execute each one*/
 tess_run(struct Fuptcha* fuptcha)
 {
-  if(fuptcha == NULL)
+  if (fuptcha == NULL)
     return 1;
 
   if (fuptcha->nthread > fuptcha->lenlangs)
     fuptcha->nthread = fuptcha->lenlangs;
 
-  if(tess_make_keyvalue(fuptcha) == -1)
+  if (tess_make_keyvalue(fuptcha) == -1)
     return 1;
 
   struct tess_agenthread agents[fuptcha->nthread];
@@ -141,10 +145,11 @@ tess_run(struct Fuptcha* fuptcha)
   for (i = 0; i < fuptcha->nthread; i++)
     pthread_create(&thread_agent[i], NULL, tess_nthread, &agents[i]);
 
-  fuptcha->barload = 0;
-  while(fuptcha->barload < fuptcha->lenlangs){
-      printf("%s~ (   %d/%d)%s\r",YELL, fuptcha->barload, fuptcha->lenlangs, RESET);
-      fflush(stdout);
+  fuptcha->barload = 1;
+  while (fuptcha->barload < fuptcha->lenlangs) {
+    printf(
+      "%s~ (   %d/%d)%s\r", YELL, fuptcha->barload, fuptcha->lenlangs, RESET);
+    fflush(stdout);
   }
 
   for (i = 0; i < fuptcha->nthread; i++)

@@ -8,8 +8,6 @@ score_point(char* text, struct Fuptcha* f)
 {
   size_t len = strnlen(f->text, TEXT_LIMIT); // remove for performance
 
-//  printf("\rtext: %s\r\n",text); 
-  
   if (strncmp(text, f->text, len) == 0)
     return 100;
   // working
@@ -31,26 +29,8 @@ score_pt_make(struct Fuptcha* f)
     vmsg("Lower point: %d", f->ipoint);
   }
 
-  //if (score_rankbuild(f) != 0)
+  // if (score_rankbuild(f) != 0)
   //  die("ranklloc");
 
   return 0;
-}
-
-int
-/* freeded by futpcha_free
- *  die soon
- * */
-score_rankbuild(struct Fuptcha* f)
-{
-  if (f->lenlangs != 0) {
-    f->rank = (int**)malloc(f->lenlangs * sizeof(int*));
-
-    for (register int i = 0; i < f->lenlangs; i++) {
-      f->rank[i] = malloc(2 * sizeof(int));
-      f->rank[i][1] = 0;
-    }
-    return 0;
-  }
-  return 1;
 }
