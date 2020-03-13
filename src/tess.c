@@ -81,7 +81,7 @@ tess_nthread(void* agent)
     tess_agent->f->key_value[tess_agent->start].key = tess_agent->start;
 
     if ((tess_agent->f->key_value[tess_agent->start].value =
-           score_point(textrecon, tess_agent->f)) == 100)
+           score_point(textrecon, tess_agent->f)) >= 70)
       printf("%s~ %s found the text -> %s%s",
              GREEN,
              tess_agent->f->langs[tess_agent->start],
