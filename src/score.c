@@ -8,13 +8,21 @@ score_point(char* text, struct Fuptcha* f)
 {
   size_t len = strnlen(f->text, TEXT_LIMIT); // remove for performance
   int score = 0;
+  size_t i;
   if (strncmp(text, f->text, len) == 0)
     return 100;
-  // working
 
-  for(size_t i = 0 ; i < len; i++){
+  /* Default Level [1] */
+  for(i = 0 ; i < len; i++){
     if(text[i] == f->text[i]) score = score + f->fpoint;
     else score = score + f->mpoint;
+  }
+
+  /* Level 2 */
+  if(f->level > 1){
+    for(i = 0; i < ){
+      
+    }
   }
 
   return score;
