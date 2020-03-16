@@ -17,17 +17,17 @@ struct Fuptcha
   char* filename;
   PIX* img;
   char** langs;
-  int lenlangs;
+  unsigned int lenlangs;
   struct Key_value* key_value;
   unsigned int fpoint;
   unsigned int mpoint;
   unsigned int ipoint;
-  //unsigned int level; // future feature
+  // unsigned int level; // future feature
   unsigned int verbose;
   unsigned int nrank;
   unsigned int nthread;
   unsigned int barload;
-  unsigned int minpt;
+  int minpt;
 };
 
 int

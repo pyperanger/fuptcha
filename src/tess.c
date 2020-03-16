@@ -122,7 +122,7 @@ tess_run(struct Fuptcha* fuptcha)
     return 1;
 
   struct tess_agenthread agents[fuptcha->nthread];
-  int i = 0, c = 0;
+  unsigned int i = 0, c = 0;
   int split_value = fuptcha->lenlangs / fuptcha->nthread;
   int split_rest = fuptcha->lenlangs % fuptcha->nthread;
 

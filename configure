@@ -4,7 +4,7 @@ _TARGET="Fuptcha";
 declare -a DEPENDENCIES=(
   # description   path
   "GCC Compiler"  "/usr/bin/gcc"
-  "Tesseract Lib" "/usr/include/teresseract"
+  "Tesseract Lib" "/usr/include/tesseract"
   "Leptonica Lib" "/usr/include/leptonica"
 );
 
