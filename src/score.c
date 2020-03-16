@@ -22,15 +22,13 @@ score_point(char* text, struct Fuptcha* f)
       score = score + f->mpoint;
   }
 
-  /* Level 2 */
-  if (f->level > 1) {
     for (i = 0; i < relen; i++) {
       for (j = 0; j < len; j++) {
         if (text[i] == f->text[j])
           score = score + f->ipoint;
       }
     }
-  }
+  
 
   // working in anothers levels
 

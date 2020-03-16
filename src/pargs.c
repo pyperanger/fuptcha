@@ -51,7 +51,6 @@ pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
 
   int opts = 0;
   fuptcha->verbose = 0;
-  fuptcha->level = 1;
   fuptcha->nrank = 1;
   fuptcha->nthread = 1;
   fuptcha->minpt = 100;
@@ -73,9 +72,6 @@ pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
         break;
       case 's':                 /*  Text Search  */
         fuptcha->text = optarg; /* some BoF but fuck */
-        break;
-      case 'l': /*  Level  */
-        fuptcha->level = atolol(optarg);
         break;
       case 't': /* Thread */
         fuptcha->nthread = atolol(optarg);
