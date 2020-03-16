@@ -27,6 +27,7 @@ struct Fuptcha
   unsigned int nrank;
   unsigned int nthread;
   unsigned int barload;
+  unsigned int minpt;
 };
 
 int

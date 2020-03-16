@@ -54,8 +54,9 @@ pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
   fuptcha->level = 1;
   fuptcha->nrank = 1;
   fuptcha->nthread = 1;
+  fuptcha->minpt = 100;
 
-  while ((opts = getopt(argc, argv, "hvf:s:l:r:t:")) != -1) {
+  while ((opts = getopt(argc, argv, "hvf:s:l:r:t:m:")) != -1) {
     switch (opts) {
       case 'h':
         help();
@@ -81,6 +82,9 @@ pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
         break;
       case 'r': /* Rank */
         fuptcha->nrank = atolol(optarg);
+        break;
+      case 'm':
+        fuptcha->minpt = atolol(optarg);
         break;
       case '?':
         if (optopt == 's') {
