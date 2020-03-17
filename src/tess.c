@@ -82,12 +82,18 @@ tess_nthread(void* agent)
 
     if ((tess_agent->f->key_value[tess_agent->start].value =
            score_point(textrecon, tess_agent->f)) >= tess_agent->f->minpt)
-      printf("%s~ [%s] make %d points -> %s%s",
+      printf("%s~ \033[1m[%s] %d hit percentage -> %s%s",
              GREEN,
              tess_agent->f->langs[tess_agent->start],
              tess_agent->f->key_value[tess_agent->start].value,
              textrecon,
              RESET);
+
+    if(tess_agent->f->verbose)
+      vmsg("[%s] %d points -> %s", 
+          tess_agent->f->langs[tess_agent->start],
+          tess_agent->f->key_value[tess_agent->start].value,
+          textrecon);
 
     tess_agent->f->barload++;
     tess_agent->start++;

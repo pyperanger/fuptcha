@@ -20,7 +20,7 @@ help()
          "\nUsage: fuptcha -f image.png -s \"FPGA2\"\n\n"
          "-f FILE  \t- File path\n"
          "-s TEXT  \t- Text string to find in image\n"
-         "-m Minimum Match\t- Minium Match Points made by language\n"
+         "-m Minimum Hit Percentage\t- (Default 100)\n"
          "-r N     \t - Set the number output of languages score.\n"
          "-t N     \t - Set the number of threads (default N = 1).\n"
          "-v       \t - Enable verbose mode\n"
