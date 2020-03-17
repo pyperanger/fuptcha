@@ -22,9 +22,7 @@ struct Fuptcha
   unsigned int fpoint;
   unsigned int mpoint;
   unsigned int ipoint;
-  // unsigned int level; // future feature
   unsigned int verbose;
-  unsigned int nrank;
   unsigned int nthread;
   unsigned int barload;
   int minpt;

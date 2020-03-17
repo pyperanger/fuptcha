@@ -21,7 +21,6 @@ help()
          "-f FILE  \t- File path\n"
          "-s TEXT  \t- Text string to find in image\n"
          "-m Minimum Hit Percentage\t- (Default 100)\n"
-         "-r N     \t - Set the number output of languages score.\n"
          "-t N     \t - Set the number of threads (default N = 1).\n"
          "-v       \t - Enable verbose mode\n"
          "-h       \t - Display this information.\n"
@@ -48,7 +47,6 @@ pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
 
   int opts = 0;
   fuptcha->verbose = 0;
-  fuptcha->nrank = 1;
   fuptcha->nthread = 1;
   fuptcha->minpt = 100;
 
@@ -72,9 +70,6 @@ pargs(int argc, char* argv[], struct Fuptcha* fuptcha)
         break;
       case 't': /* Thread */
         fuptcha->nthread = atolol(optarg);
-        break;
-      case 'r': /* Rank */
-        fuptcha->nrank = atolol(optarg);
         break;
       case 'm':
         fuptcha->minpt = atolol(optarg);
