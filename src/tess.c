@@ -26,8 +26,8 @@ tess_list_langs(struct Fuptcha* f)
     if (f->verbose)
       lmsg(i + 1, f->langs[i]);
   }
-  f->lenlangs = i;
-  gmsg("%d Avaiable languages in default path", i);
+  f->lenlangs = i--; // vetor
+  gmsg("%d Avaiable languages in default path", i+1);
 }
 
 int
@@ -55,7 +55,6 @@ tess_nthread(void* agent)
 {
   struct tess_agenthread* tess_agent = (struct tess_agenthread*)agent;
   TessBaseAPI* handle = NULL;
-  // size_t i = 0;
   char* textrecon;
   handle = TessBaseAPICreate();
 
@@ -63,7 +62,8 @@ tess_nthread(void* agent)
     TessBaseAPISetVariable(
       handle, "debug_file", "/dev/null"); // Avoid DPI Errors
 
-  while (tess_agent->start < tess_agent->end) {
+  while (tess_agent->start <= tess_agent->end) {
+    tess_agent->f->barload++;
     if (TessBaseAPIInit3(
           handle, NULL, tess_agent->f->langs[tess_agent->start]) != 0)
       vmsg("Error TessBaseAPIInit3: %s",
@@ -90,15 +90,16 @@ tess_nthread(void* agent)
              RESET);
 
     if(tess_agent->f->verbose)
-      vmsg("[%s] %d points -> %s", 
+      vmsg("[%s] %d points -> %s in thread [%d - %d]", 
           tess_agent->f->langs[tess_agent->start],
           tess_agent->f->key_value[tess_agent->start].value,
-          textrecon);
+          textrecon,
+          tess_agent->start,
+          tess_agent->end);
 
-    tess_agent->f->barload++;
     tess_agent->start++;
   }
-
+  
   tess_free(handle);
   return NULL;
 }
@@ -160,7 +161,7 @@ tess_run(struct Fuptcha* fuptcha)
            RESET);
     fflush(stdout);
   }
-
+ 
   for (i = 0; i < fuptcha->nthread; i++)
     pthread_join(thread_agent[i], NULL);
 
