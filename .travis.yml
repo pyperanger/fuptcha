@@ -1,6 +1,6 @@
 language: c
 
-compiler: gcc
+compiler: clang # only for trevis
 
 before_script:
   - sudo apt update
