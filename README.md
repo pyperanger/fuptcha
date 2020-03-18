@@ -14,7 +14,7 @@ Usage: fuptcha -f image.png -s "FPGA2"
 
 -f FILE         - File path
 -s TEXT         - Text string to find in image
--m Minimum Hit Percentage       - (Default 100)
+-m N             - Minimum Hit Percentage (Default N = 100)
 -t N             - Set the number of threads (default N = 1).
 -v               - Enable verbose mode
 -h               - Display this information.
