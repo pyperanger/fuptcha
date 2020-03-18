@@ -2,11 +2,10 @@ language: c
 
 compiler: gcc
 
-install: 
+before_script:
   - sudo apt update
   - sudo apt install libtesseract-dev tesseract-ocr libleptonica-dev make 
 
 script:
-  - cd pyperanger/fuptcha/
   - ./configure
-  - ./make
+  - make
