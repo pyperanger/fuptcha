@@ -7,5 +7,6 @@ install:
   - sudo apt install libtesseract-dev tesseract-ocr libleptonica-dev make 
 
 script:
+  - cd pyperanger/fuptcha/
   - ./configure
   - ./make
