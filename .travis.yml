@@ -3,8 +3,8 @@ language: c
 compiler: gcc
 
 install: 
-  - apt update
-  - apt install libtesseract-dev tesseract-ocr libleptonica-dev make 
+  - sudo apt update
+  - sudo apt install libtesseract-dev tesseract-ocr libleptonica-dev make 
 
 script:
   - ./configure && make
