@@ -42,4 +42,6 @@ $ sudo git clone https://github.com/tesseract-ocr/tessdata.git /usr/share/tessda
 Python module install - Coming soon
 
 ---
+Have found a Bug or a good Idea? Nice! Report here: https://github.com/pyperanger/fuptcha/issues
+
 Written by pype & growlnx
