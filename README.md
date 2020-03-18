@@ -1,6 +1,12 @@
 # fuptcha
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](http://forthebadge.com)
 
+[![code-inspector](https://www.code-inspector.com/project/4758/score/svg)](https://www.code-inspector.com/)
+[![code-inspector](https://www.code-inspector.com/project/4758/status/svg)](https://www.code-inspector.com/)
+[![https://travis-ci.org/pyperanger/fuptcha](https://travis-ci.org/pyperanger/fuptcha.svg?branch=master)](https://travis-ci.org/pyperanger/fuptcha)
+
+
+
 Fuptcha is a fuzzer CAPTCHA image recongnizer tool made in [Tesseract](https://github.com/tesseract-ocr/) C API. It try to find out the best language(trained models) in your tessdata repository to crack the CAPTCHA image given. You can utilize standalone Fuptcha binary for Proof of Concept prorpose or the fuptcha Python module for simulate real world attacks.
 
 Is recomended install trained models from: https://github.com/tesseract-ocr/tessdata for best accuracy. (166 samples)
