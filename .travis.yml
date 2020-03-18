@@ -4,7 +4,7 @@ compiler: clang # only for trevis
 
 before_script:
   - sudo apt update
-  - sudo apt install libtesseract-dev tesseract-ocr libleptonica-dev make 
+  - sudo apt install libtesseract-dev tesseract-ocr libleptonica-dev make llvm-7-dev clang-7
 
 script:
   - ./configure
