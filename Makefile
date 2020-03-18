@@ -1,4 +1,4 @@
-CFLAGS+=-Wall -Wextra -O3 -march=native -flto -llept -ltesseract -pthread 
+CFLAGS+=-Wall -Wextra -O3 -march=native -llept -ltesseract -pthread 
 SRCDIR=src
 
 OBJFILES = fuptcha.o  img.o  pargs.o  score.o  tess.o  util.o
