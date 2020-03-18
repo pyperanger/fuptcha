@@ -7,4 +7,5 @@ install:
   - sudo apt install libtesseract-dev tesseract-ocr libleptonica-dev make 
 
 script:
-  - ./configure && make
+  - ./configure
+  - ./make
