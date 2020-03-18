@@ -20,7 +20,7 @@ Usage: fuptcha -f image.png -s "FPGA2"
 -h               - Display this information.
 ```
 
-![demo1](example/demo1.gif)![foto1](example/foto1.jpg)
+<img src="example/demo1.gif" alt="drawing" width="550"/>![foto1](example/foto1.jpg)
 
 By default only 100% match trained models(languages) will display in console. You can set this value with '-m' argument.
 ### Python Module
