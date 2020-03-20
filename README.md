@@ -4,6 +4,7 @@
 [![code-inspector](https://www.code-inspector.com/project/4758/score/svg)](https://www.code-inspector.com/)
 [![code-inspector](https://www.code-inspector.com/project/4758/status/svg)](https://www.code-inspector.com/)
 [![https://travis-ci.org/pyperanger/fuptcha](https://travis-ci.org/pyperanger/fuptcha.svg?branch=master)](https://travis-ci.org/pyperanger/fuptcha)
+[![https://github.com/pyperanger/fuptcha/releases/tag/v1.1.0](https://img.shields.io/badge/version-1.1.0-green.svg)](https://github.com/pyperanger/fuptcha/releases/tag/v1.1.0)
 
 
 
