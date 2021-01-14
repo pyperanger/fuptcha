@@ -12,6 +12,8 @@ Fuptcha is a fuzzer CAPTCHA image recongnizer tool made in [Tesseract](https://g
 
 Is recomended install trained models from: https://github.com/tesseract-ocr/tessdata for best accuracy. (166 samples)
 
+
+Current we're working in port the project to C++.
 ## Usage
 You provide an image of the captcha you want to break and the correct text of this image, so the fuptcha will try to find out which trained models are able to correctly identify the text, which can be used as PoC for a security report, and / or automated attacks on web forms.
 
